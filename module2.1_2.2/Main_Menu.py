@@ -1,16 +1,16 @@
 # Main Menu File
 
 import pyinputplus as pyip
-# import 2_2_2_module as m
-# from 2_2_2_module import edit_info
+# import module222 as m
+# from module222 import edit_info
 import pyspark as py
 import pandas as pd
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
 import pyinputplus as pyip
-import 2_1_1module
-import 2_2_3module
-import 2_2_4module
+import module21_1
+import module22_3
+import module22_4
 
 # Creating Spark Session
 sp = SparkSession.builder.appName("Customer").getOrCreate()
@@ -68,7 +68,7 @@ while True:
     if var_main_menu == 'Exit':
         break
     elif var_main_menu == 'Transactions made by customers by Zipcode':
-        2_1_1module.test_call(df_sp_cc_cust)
+        module21_1.test_call(df_sp_cc_cust)
     elif var_main_menu == 'Display the transactions made by a customer between two dates':
         module22_4.test_call2(df_sp_cc_cust, list_ssn)
     elif var_main_menu == 'Generate a monthly bill for a credit card number for a given month and year':

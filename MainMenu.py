@@ -1,0 +1,114 @@
+# Main Menu File
+
+import pyinputplus as pyip
+# import module22_2 as m
+# from module22_2 import edit_info
+import pyspark as py
+import pandas as pd
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
+import pyinputplus as pyip
+import module21_1
+import module21_2
+import module21_3
+import module22_1
+import module22_2
+import module22_3
+import module22_4
+
+# Creating Spark Session
+sp = SparkSession.builder.appName("Customer").getOrCreate()
+
+df_sp_cust = sp.read.format("jdbc") \
+    .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
+    .option("dbtable", "CDW_SAPP_CUSTOMER") \
+    .option("user", "root") \
+    .option("password", "password") \
+    .load()
+
+df_sp_cc = sp.read.format("jdbc") \
+    .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
+    .option("dbtable", "CDW_SAPP_CREDIT_CARD") \
+    .option("user", "root") \
+    .option("password", "password") \
+    .load()
+
+query = "(SELECT cc.*, cust.cust_zip \
+        FROM cdw_sapp_credit_card as cc \
+        JOIN cdw_sapp_customer as cust ON cc.CUST_SSN = cust.SSN) as a"
+
+df_sp_cc_cust = sp.read.format("jdbc") \
+    .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
+    .option("dbtable", query) \
+    .option("user", "root") \
+    .option("password", "password") \
+    .load()
+
+query1 = "(SELECT bc.BRANCH_CODE,bc.BRANCH_STATE,\
+      cc.TRANSACTION_VALUE,cc.TRANSACTION_TYPE,cc.BRANCH_CODE \
+      FROM cdw_sapp_branch bc \
+      JOIN cdw_sapp_credit_card cc ON bc.BRANCH_CODE=cc.BRANCH_CODE) as b"
+
+df_sp_br_cc = sp.read.format("jdbc") \
+    .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
+    .option("dbtable", query1) \
+    .option("user", "root") \
+    .option("password", "password") \
+    .load()
+
+df_sp_cc_cust = df_sp_cc_cust.withColumn('Date', concat(df_sp_cc_cust['TIMEID'].substr(0,4), lit('-'), \
+                                               df_sp_cc_cust['TIMEID'].substr(5,2), lit('-'), \
+                                               df_sp_cc_cust['TIMEID'].substr(7,2) \
+                                               ))
+df_pd_cust = df_sp_cust.toPandas()
+list_ssn = list(df_pd_cust['SSN'])
+
+pd_credit = df_sp_cc.toPandas()
+list_cc = list(pd_credit['CUST_CC_NO'])
+
+df_pd_cc = df_sp_cc.toPandas()
+list_type = list(df_pd_cc['TRANSACTION_TYPE'].drop_duplicates())
+
+
+list_main_menu = ["2.1.1: Transactions made by customers by Zipcode",
+                  "2.1.2: Count and total values of transactions for a given type",
+                  "2.1.3: Total number and total values of transactions for branches in a given state",
+                  "2.2.1: Check the existing account details of a customer"
+                  "2.2.2: Modify the existing account details of a customer",
+                  "2.2.3: Generate a monthly bill for a credit card number for a given month and year",
+                  "2.2.4: Display the transactions made by a customer between two dates",
+                #   "Data Analysis and Visualization",
+                  "Exit"]
+
+
+while True:
+    var_main_menu = pyip.inputMenu(list_main_menu, numbered=True)
+    print(var_main_menu)
+    if var_main_menu == 'Exit':
+        break
+    elif var_main_menu == '2.1.1: Transactions made by customers by Zipcode':
+        module21_1.test_call_1(df_sp_cc_cust)
+    elif var_main_menu == '2.1.2: Count and total values of transactions for a given type':
+        module21_2.test_call_6(df_sp_cc)
+    elif var_main_menu == '2.1.3: Total number and total values of transactions for branches in a given state':
+        module21_1.test_call_7(df_sp_br_cc)   
+    elif var_main_menu == '2.2.1: Check the existing account details of a customer':
+        module22_1.test_call_4()
+    # elif var_main_menu == '2.2.2: Modify the existing account details of a customer':
+    #     module22_2.test_call5(df_sp_cc_cust)   
+    elif var_main_menu == '2.2.3: Generate a monthly bill for a credit card number for a given month and year':
+        module22_3.test_call3(df_sp_cc, list_cc)   
+    elif var_main_menu == '2.2.4: Display the transactions made by a customer between two dates':
+        module22_4.test_call2(df_sp_cc_cust, list_ssn)
+
+
+    # var_ssn = pyip.inputInt("Enter SSN : ")
+    # # var_ans
+    # if m.validate_ssn(df_pd_cust, var_ssn):
+    #     m.edit_info(df_cust, var_ssn)
+    #     print('Back from edit menu')
+    #     continue
+    # else:
+    #     if var_ssn == 'N':
+    #         break
+    #     continue
