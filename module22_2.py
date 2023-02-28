@@ -132,15 +132,4 @@ pd_result.loc[0, 'CUST_STATE'], pd_result.loc[0, 'CUST_ZIP'], var_ssn)
                 print("Database Connection error. Update failed!")
             break
 
-
-while True:
-    var_ans = pyip.inputStr("Would you like to update Customer Information? (Y/N) : ")
-    # var_ans
-    if validate_ans(var_ans):
-        edit_info()
-        upd_query = ""
-        break
-    else:
-        if var_ans == 'N':
-            break
-        continue
+# edit_info()
