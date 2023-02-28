@@ -1,7 +1,24 @@
 # 2_2.3: Used to generate a monthly bill for a credit card number for a given month and year.
 
+import pyspark
+from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
 import pyinputplus as pyip
+
+# Initialize Spark Session
+sp = SparkSession.builder.appName("transactions").getOrCreate()
+
+df_sp_cc = sp.read.format("jdbc") \
+    .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
+    .option("dbtable", "CDW_SAPP_CREDIT_CARD") \
+    .option("user", "root") \
+    .option("password", "password") \
+    .load()
+
+
+pd_credit = df_sp_cc.toPandas()
+list_cc = list(pd_credit['CUST_CC_NO'])
+
 
 def validate_cc(var_cc, list_cc):
     if var_cc in list_cc:
@@ -23,7 +40,7 @@ def show_info(df_sp_cc, var_cc, var_month, var_year):
     result_total.show()
     
 
-def test_call3(df_sp_cc, list_cc):
+def test_call_3(df_sp_cc, list_cc):
     while True:
         var_cc = pyip.inputStr("Enter 16-digit Creditcard Number (0 to Exit) : ")
     
@@ -56,3 +73,6 @@ def test_call3(df_sp_cc, list_cc):
             if var_cc == '0':
                 break
             continue
+
+# test_call_3(df_sp_cc, list_cc)
+# 4210653349028689 05 2018

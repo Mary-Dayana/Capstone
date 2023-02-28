@@ -17,6 +17,10 @@ df_sp_cc_cust = sp.read.format("jdbc") \
     .option("password", "password") \
     .load()
 
+df_sp_cc_cust = df_sp_cc_cust.withColumn('Date', concat(df_sp_cc_cust['TIMEID'].substr(0,4), lit('-'), \
+                                               df_sp_cc_cust['TIMEID'].substr(5,2), lit('-'), \
+                                               df_sp_cc_cust['TIMEID'].substr(7,2) \
+                                               ))
 def show_report(df_sp_cc_cust, zip, yr, mm):
     print("inside the function", zip, yr, mm)
     data = df_sp_cc_cust.select('TRANSACTION_ID','transaction_type', \
@@ -49,10 +53,11 @@ def test_call_1(df_sp_cc_cust):
                 continue
         if yr == 0:
             break
-
+                
         mm = pyip.inputInt("Enter month: ")
         if mm < 1 or mm > 12:
             continue
         show_report(df_sp_cc_cust, zip, yr, mm)
 
-test_call_1(df_sp_cc_cust)
+# test_call_1(df_sp_cc_cust)
+# 91010 2018 05

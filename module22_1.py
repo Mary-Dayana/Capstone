@@ -16,6 +16,7 @@ df_sp_cust = sp.read.format("jdbc") \
     .option("user", "root") \
     .option("password", "password") \
     .load()
+
 df_pd_cust = df_sp_cust.toPandas()
 list_ssn = list(df_pd_cust['SSN'])
 # list_ssn
@@ -55,6 +56,8 @@ def test_call_4():
         else:
             if var_ssn == 0:
                 break
-            continue
+        # continue
 
-test_call_4()
+# test_call_4()
+# 123456100
+# 123453023

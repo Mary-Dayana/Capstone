@@ -1,8 +1,6 @@
 # Main Menu File
 
 import pyinputplus as pyip
-# import module22_2 as m
-# from module22_2 import edit_info
 import pyspark as py
 import pandas as pd
 from pyspark.sql import SparkSession
@@ -15,7 +13,9 @@ import module22_1
 import module22_2
 import module22_3
 import module22_4
+import warnings
 
+warnings.filterwarnings('ignore')
 # Creating Spark Session
 sp = SparkSession.builder.appName("Customer").getOrCreate()
 
@@ -44,10 +44,10 @@ df_sp_cc_cust = sp.read.format("jdbc") \
     .option("password", "password") \
     .load()
 
-query1 = "(SELECT bc.BRANCH_CODE,bc.BRANCH_STATE,\
-      cc.TRANSACTION_VALUE,cc.TRANSACTION_TYPE,cc.BRANCH_CODE \
+query1 = "(SELECT bc.BRANCH_CODE, bc.BRANCH_STATE,\
+      cc.TRANSACTION_VALUE,cc.TRANSACTION_TYPE \
       FROM cdw_sapp_branch bc \
-      JOIN cdw_sapp_credit_card cc ON bc.BRANCH_CODE=cc.BRANCH_CODE) as b"
+      JOIN cdw_sapp_credit_card cc ON bc.BRANCH_CODE = cc.BRANCH_CODE) as b"
 
 df_sp_br_cc = sp.read.format("jdbc") \
     .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
@@ -73,42 +73,31 @@ list_type = list(df_pd_cc['TRANSACTION_TYPE'].drop_duplicates())
 list_main_menu = ["2.1.1: Transactions made by customers by Zipcode",
                   "2.1.2: Count and total values of transactions for a given type",
                   "2.1.3: Total number and total values of transactions for branches in a given state",
-                  "2.2.1: Check the existing account details of a customer"
+                  "2.2.1: Check the existing account details of a customer",
                   "2.2.2: Modify the existing account details of a customer",
                   "2.2.3: Generate a monthly bill for a credit card number for a given month and year",
                   "2.2.4: Display the transactions made by a customer between two dates",
-                #   "Data Analysis and Visualization",
                   "Exit"]
 
 
 while True:
     var_main_menu = pyip.inputMenu(list_main_menu, numbered=True)
     print(var_main_menu)
-    if var_main_menu == 'Exit':
-        break
-    elif var_main_menu == '2.1.1: Transactions made by customers by Zipcode':
+    # if var_main_menu == 'Exit':
+        # break
+    if var_main_menu == '2.1.1: Transactions made by customers by Zipcode':
         module21_1.test_call_1(df_sp_cc_cust)
     elif var_main_menu == '2.1.2: Count and total values of transactions for a given type':
         module21_2.test_call_6(df_sp_cc)
     elif var_main_menu == '2.1.3: Total number and total values of transactions for branches in a given state':
-        module21_1.test_call_7(df_sp_br_cc)   
+        module21_3.test_call_7()   
     elif var_main_menu == '2.2.1: Check the existing account details of a customer':
         module22_1.test_call_4()
-    # elif var_main_menu == '2.2.2: Modify the existing account details of a customer':
-    #     module22_2.test_call5(df_sp_cc_cust)   
+    elif var_main_menu == '2.2.2: Modify the existing account details of a customer':
+        module22_2.edit_info()
     elif var_main_menu == '2.2.3: Generate a monthly bill for a credit card number for a given month and year':
-        module22_3.test_call3(df_sp_cc, list_cc)   
+        module22_3.test_call_3(df_sp_cc, list_cc)   
     elif var_main_menu == '2.2.4: Display the transactions made by a customer between two dates':
-        module22_4.test_call2(df_sp_cc_cust, list_ssn)
-
-
-    # var_ssn = pyip.inputInt("Enter SSN : ")
-    # # var_ans
-    # if m.validate_ssn(df_pd_cust, var_ssn):
-    #     m.edit_info(df_cust, var_ssn)
-    #     print('Back from edit menu')
-    #     continue
-    # else:
-    #     if var_ssn == 'N':
-    #         break
-    #     continue
+        module22_4.test_call_2(df_sp_cc_cust, list_ssn)
+    else:
+        break

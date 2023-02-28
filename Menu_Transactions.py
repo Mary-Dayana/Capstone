@@ -80,7 +80,7 @@ def self_employed_5_1(pandas_df):
     pandas_df['Percent'] = pandas_df['Percent'].astype('float')
     print(pandas_df.dtypes)
 
-    pandas_df.plot(kind='bar', x='self_employed', y='Percent', figsize=(4,6))
+    pandas_df.plot(kind='bar', x='self_employed', y='Percent', figsize=(6,6))
     plt.title('The percentage of applications approved for self-employed applicants')
     plt.xlabel('Self-Employed')
     plt.ylabel('Percentage of Applications')
