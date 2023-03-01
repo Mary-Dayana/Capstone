@@ -24,7 +24,7 @@ DESCRIPTION:
                 3. CDW_SAPP_CUSTOMER.JSON
                 4. Extract Data from Given API 
         ---  STEP 2: ---
-                rasform the data as per the requirements in the dataframes
+                Transform the data as per the requirements in the dataframes(Pandas and Pyspark)
         ---  STEP 3: ---
                 Load the clean data in to database(Maria DB)  “creditcard_capstone”
                 and tables accordingly
@@ -50,22 +50,59 @@ DESCRIPTION:
                     Data analysis and Visualization
                     As per the requirements, made visualizations for the business analyst to analyze and vizualise the data.
                     Screenshots for all Visualizations are placed in the "Screenshots" folder.
+RESULT:
+        The ETL pipeline was successful.
+        -- Verify-- Check in Database for the success of dataLoad (or) Read the data from Database into Dataframe
+
 PROJECT STRUCTURE:
+    
     ETL files:
-            1_ETL_json_branch.ipynb
-            1_ETL_json_credit.ipynb
-            1_ETL_json_customer.ipynb
-            4_ETL_loan_API.ipynb
-            
-References:
+                1_ETL_json_branch.ipynb
+                1_ETL_json_credit.ipynb
+                1_ETL_json_customer.ipynb
+                4_ETL_loan_API.ipynb
+
+    Menu Driven files:
+                module21_1.py
+                module21_2.py
+                module21_3.py
+                module22_1.py
+                module22_2.py
+                module22_3.py
+                module22_4.py
+                MainMenu.py (step 5)
+                Menu_Transactions.py (step 7)
+
+    Visualization files:
+                3_visualization_Files.ipynb (jupyter file)
+                5_visualization_API.ipynb   (jupyter file)
+                functions_visualizations.ipynb (python file having functions for all visualizations)
+                
+HOW TO RUN PROJECT IN MACHINE:
+
+    1. Install Python 3.10.9 version
+    2. Install Maria DB, HeidiSQL(GUI)
+    3. Import Pandas, Pyspark, numpy, Matplotlib, Seaborn, printinputplus libraries
+    4. Jupyter notebook (to check individual steps..easy for debugging)
+    5. Git (create repository and clone into local machine)
+    
+CONCLUSION:
+        - This Project uses technologies to manage ETL process for a Loan Application data and a credit card dataset using python (Pandas, Pyspark, numpy, Matplotlib, Seaborn, printinputpluslibraries), MariaDB, Apache Spark (Core, Spark SQL).
+        - Loan Application data API containing Customer onlineapplication from data(for loan eligibility).         
+
+REFERENCES:
+
+    PROJECT WORKFLOW:
+        C:\Users\Learner_XZHCG217\Desktop\TEK-Dataengineering\Git\Capstone\Screenshots\Project_Workflow.png
+    
     MariaDB Documentation
-    https://mariadb.org/
+        https://mariadb.org/
 
     PySpark
-    https://spark.apache.org/docs/latest/api/python/index.html
+        https://spark.apache.org/docs/latest/api/python/index.html
 
     Apache Spark - Spark SQL
-    https://spark.apache.org/sql/
+        https://spark.apache.org/sql/
 
     Analyzing and Visualization 
-    https://www.analyticsvidhya.com/blog/2021/08/understanding-bar-plots-in-python-beginners-guide-to-data-visualization/
+        https://www.analyticsvidhya.com/blog/2021/08/understanding-bar-plots-in-python-beginners-guide-to-data-visualization/
