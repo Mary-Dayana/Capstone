@@ -50,6 +50,17 @@ DESCRIPTION:
                     Data analysis and Visualization
                     As per the requirements, made visualizations for the business analyst to analyze and vizualise the data.
                     Screenshots for all Visualizations are placed in the "Screenshots" folder.
+
+        SCREENSHOTS for Visualizations:
+                        C:\Users\Learner_XZHCG217\Desktop\TEK-Dataengineering\Git\Capstone\Screenshots\3.1.png
+                        C:\Users\Learner_XZHCG217\Desktop\TEK-Dataengineering\Git\Capstone\Screenshots\3.2.png
+                        C:\Users\Learner_XZHCG217\Desktop\TEK-Dataengineering\Git\Capstone\Screenshots\3.3.png
+                        C:\Users\Learner_XZHCG217\Desktop\TEK-Dataengineering\Git\Capstone\Screenshots\5.1.png
+                        C:\Users\Learner_XZHCG217\Desktop\TEK-Dataengineering\Git\Capstone\Screenshots\5.2.png
+                        C:\Users\Learner_XZHCG217\Desktop\TEK-Dataengineering\Git\Capstone\Screenshots\5.3.png
+                        C:\Users\Learner_XZHCG217\Desktop\TEK-Dataengineering\Git\Capstone\Screenshots\5.4.png
+                        C:\Users\Learner_XZHCG217\Desktop\TEK-Dataengineering\Git\Capstone\Screenshots\Tableau Screenshot.png
+
 RESULT:
         The ETL pipeline was successful.
         -- Verify-- Check in Database for the success of dataLoad (or) Read the data from Database into Dataframe
