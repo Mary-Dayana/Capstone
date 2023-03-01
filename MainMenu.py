@@ -6,13 +6,13 @@ import pandas as pd
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
 import pyinputplus as pyip
-import 2_module21_1
-import 2_module21_2
-import 2_module21_3
-import 2_module22_1
-import 2_module22_2
-import 2_module22_3
-import 2_module22_4
+import module21_1
+import module21_2
+import module21_3
+import module22_1
+import module22_2
+import module22_3
+import module22_4
 import warnings
 
 warnings.filterwarnings('ignore')
@@ -86,18 +86,18 @@ while True:
     # if var_main_menu == 'Exit':
         # break
     if var_main_menu == '2.1.1: Transactions made by customers by Zipcode':
-        2_module21_1.test_call_1(df_sp_cc_cust)
+        module21_1.test_call_1(df_sp_cc_cust)
     elif var_main_menu == '2.1.2: Count and total values of transactions for a given type':
-        2_module21_2.test_call_6(df_sp_cc)
+        module21_2.test_call_6(df_sp_cc)
     elif var_main_menu == '2.1.3: Total number and total values of transactions for branches in a given state':
-        2_module21_3.test_call_7()   
+        module21_3.test_call_7()   
     elif var_main_menu == '2.2.1: Check the existing account details of a customer':
-        2_module22_1.test_call_4()
+        module22_1.test_call_4()
     elif var_main_menu == '2.2.2: Modify the existing account details of a customer':
-        2_module22_2.edit_info()
+        module22_2.edit_info()
     elif var_main_menu == '2.2.3: Generate a monthly bill for a credit card number for a given month and year':
-        2_module22_3.test_call_3(df_sp_cc, list_cc)   
+        module22_3.test_call_3(df_sp_cc, list_cc)   
     elif var_main_menu == '2.2.4: Display the transactions made by a customer between two dates':
-        2_module22_4.test_call_2(df_sp_cc_cust, list_ssn)
+        module22_4.test_call_2(df_sp_cc_cust, list_ssn)
     else:
         break
