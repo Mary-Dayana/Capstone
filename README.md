@@ -67,27 +67,25 @@ RESULT:
 
 PROJECT STRUCTURE:
     
-    ETL files:
-                1_ETL_json_branch.ipynb
-                1_ETL_json_credit.ipynb
-                1_ETL_json_customer.ipynb
-                4_ETL_loan_API.ipynb
-
-    Menu Driven files:
-                module21_1.py
-                module21_2.py
-                module21_3.py
-                module22_1.py
-                module22_2.py
-                module22_3.py
-                module22_4.py
-                MainMenu.py (step 5)
-                Menu_Transactions.py (step 7)
-
-    Visualization files:
-                3_visualization_Files.ipynb (jupyter file)
-                5_visualization_API.ipynb   (jupyter file)
-                functions_visualizations.ipynb (python file having functions for all visualizations)
+        ETL files:
+                            1_ETL_json_branch.ipynb
+                            1_ETL_json_credit.ipynb
+                            1_ETL_json_customer.ipynb
+                            4_ETL_loan_API.ipynb
+        Menu Driven files:
+                            module21_1.py
+                            module21_2.py
+                            module21_3.py
+                            module22_1.py
+                            module22_2.py
+                            module22_3.py
+                            module22_4.py
+                            MainMenu.py (step 5)
+                            Menu_Transactions.py (step 7)
+        Visualization files:
+                            3_visualization_Files.ipynb (jupyter file)
+                            5_visualization_API.ipynb   (jupyter file)
+                            functions_visualizations.ipynb (python file having functions for all visualizations)
                 
 HOW TO RUN PROJECT IN MACHINE:
 
