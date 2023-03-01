@@ -1,3 +1,6 @@
+# 1)    Used to display the transactions made by customers living in a given zip code for a given month and year. 
+# Order by day in descending order.
+
 import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
