@@ -36,15 +36,15 @@ DESCRIPTION:
                 Created a console-based Python program to satisfy System Requirements
         ---  STEP 5: ---
                 Transaction Details 
-                    1)    Used to display the transactions made by customers living in a given zip code for a given month and year. Order by day in descending order.
-                    2)    Used to display the number and total values of transactions for a given type.
-                    3)    Used to display the total number and total values of transactions for branches in a given state
+                    1. Used to display the transactions made by customers living in a given zip code for a given month and year. Order by day in descending order.
+                    2. Used to display the number and total values of transactions for a given type.
+                    3. Used to display the total number and total values of transactions for branches in a given state
                 Customer Details
-                    1) Used to check the existing account details of a customer.
-                    2) Used to modify the existing account details of a customer.
-                    3) Used to generate a monthly bill for a credit card number for a given month and year.
-                    4) Used to display the transactions made by a customer between two dates. Order by year, month, and day in descending order.
-        ---  STEP 6: ------  STEP 6: ---
+                    1. Used to check the existing account details of a customer.
+                    2. Used to modify the existing account details of a customer.
+                    3. Used to generate a monthly bill for a credit card number for a given month and year.
+                    4. Used to display the transactions made by a customer between two dates. Order by year, month, and day in descending order.
+        ---  STEP 6: ---
                     Validations for the above module
         ---  STEP 7: ---
                     Data analysis and Visualization
@@ -102,16 +102,12 @@ CONCLUSION:
 REFERENCES:
 
     PROJECT WORKFLOW:
-        C:\Users\Learner_XZHCG217\Desktop\TEK-Dataengineering\Git\Capstone\Screenshots\Project_Workflow.png
-    
+            C:\Users\Learner_XZHCG217\Desktop\TEK-Dataengineering\Git\Capstone\Screenshots\Project_Workflow.png
     MariaDB Documentation
-        https://mariadb.org/
-
+            https://mariadb.org/
     PySpark
-        https://spark.apache.org/docs/latest/api/python/index.html
-
+            https://spark.apache.org/docs/latest/api/python/index.html
     Apache Spark - Spark SQL
-        https://spark.apache.org/sql/
-
+            https://spark.apache.org/sql/
     Analyzing and Visualization 
-        https://www.analyticsvidhya.com/blog/2021/08/understanding-bar-plots-in-python-beginners-guide-to-data-visualization/
+            https://www.analyticsvidhya.com/blog/2021/08/understanding-bar-plots-in-python-beginners-guide-to-data-visualization/
